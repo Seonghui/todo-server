@@ -2,17 +2,19 @@ import dotEnvFlow from 'dotenv-flow';
 import express from 'express';
 import bodyParser from 'body-parser';
 import router from '@/src/router';
+import env from '@/src/config/enviromnent';
 
 dotEnvFlow.config();
 
-const { APP_PORT, NODE_ENV } = process.env;
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.listen(APP_PORT, () => {
-  console.log(`This is ${NODE_ENV} environment.\nServer is running on port ${APP_PORT}.`);
+console.log(`NODE_ENV=${env.NODE_ENV}`);
+
+app.listen(env.PORT, () => {
+  console.log(`Server is running on port ${env.PORT}.`);
 });
 
 app.use(router);

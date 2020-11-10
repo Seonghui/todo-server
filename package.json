@@ -7,9 +7,9 @@
     "lint": "eslint src/**/* --fix",
     "lint:fix": "eslint '**/*.ts' --fix",
     "start:dev": "cross-env NODE_ENV=development nodemon --exec ts-node -r tsconfig-paths/register -r dotenv-flow/config src/index.ts",
-    "build:test": "npm run lint && cross-env NODE_ENV=test webpack --config webpack.config.js",
+    "build:test": "npm run lint && webpack --config webpack.config.dev.js",
     "start:test": "cross-env NODE_ENV=test node -r dotenv-flow/config dist/index.js",
-    "build:production": "npm run lint && cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "build:production": "npm run lint && webpack --config webpack.config.js",
     "start:production": "cross-env NODE_ENV=production node -r dotenv-flow/config dist/index.js"
   },
   "keywords": [],

@@ -1,0 +1,17 @@
+FROM node:12-slim
+
+ENV TZ Asia/Seoul
+
+ENV APP /app
+RUN mkdir -p APP
+COPY . APP
+WORKDIR APP
+
+# Build
+RUN npm install
+ENV NODE_ENV development
+RUN npm run build:test
+
+EXPOSE 80
+# Command
+CMD ["npm", "run", "start:test"]
