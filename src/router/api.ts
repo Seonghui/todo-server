@@ -10,7 +10,7 @@ interface Result {
   data?: any;
 }
 
-router.get('/lists/', (req, res) => {
+router.get('/todos/', (req, res) => {
   const result: Result = {};
   mysqlConn.query('select * from item', (err, rows) => {
     if (err) throw err;
@@ -24,7 +24,7 @@ router.get('/lists/', (req, res) => {
   });
 });
 
-router.get('/lists/:uid', (req, res) => {
+router.get('/todos/:uid', (req, res) => {
   const { uid } = req.params;
   const result: Result = {};
   mysqlConn.query('select * from item where uid =?', [uid], (err, rows) => {
@@ -39,7 +39,7 @@ router.get('/lists/:uid', (req, res) => {
   });
 });
 
-router.post('/lists/', (req, res) => {
+router.post('/todos/', (req, res) => {
   const { content, status, date } = req.body;
   const sql = { content, status, date };
   mysqlConn.query('insert into item set ?', sql, (err) => {
@@ -48,7 +48,7 @@ router.post('/lists/', (req, res) => {
   });
 });
 
-router.put('/lists/:uid', (req, res) => {
+router.put('/todos/:uid', (req, res) => {
   const { content, status, date } = req.body;
   const { uid } = req.params;
   const result: Result = {};
@@ -63,7 +63,7 @@ router.put('/lists/:uid', (req, res) => {
   });
 });
 
-router.delete('/lists/:uid', (req, res) => {
+router.delete('/todos/:uid', (req, res) => {
   const { uid } = req.params;
   const result: Result = {};
   mysqlConn.query('delete from item where uid = ? ', [uid], (err, rows) => {
