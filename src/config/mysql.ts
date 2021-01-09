@@ -1,18 +1,17 @@
 import mysql, { Connection } from 'mysql';
 import dotEnvFlow from 'dotenv-flow';
+import enviromnent from '@/src/config/enviromnent';
 
 dotEnvFlow.config();
-
-const { MYSQL_PORT = '3306' } = process.env;
 
 const mysqlConnection = {
   init: function (): Connection {
     return mysql?.createConnection({
-      host: process.env.MYSQL_HOST,
-      port: parseInt(MYSQL_PORT),
-      user: process.env.MYSQL_USER,
-      password: process.env.MYSQL_PASS,
-      database: process.env.MYSQL_DB,
+      host: enviromnent.MYSQL_HOST,
+      port: enviromnent.MYSQL_PORT as number,
+      user: enviromnent.MYSQL_USER,
+      password: enviromnent.MYSQL_PASS,
+      database: enviromnent.MYSQL_DB,
     });
   },
   open: function (conn: Connection): void {
