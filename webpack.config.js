@@ -1,8 +1,9 @@
+import { NODE_ENV } from './src/config/enviromnent';
 const path = require('path');
 
 module.exports = {
   entry: './src/index.ts',
-  mode: 'production',
+  mode: NODE_ENV,
   target: 'node',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -13,6 +14,9 @@ module.exports = {
       '@': path.resolve(__dirname, './'),
     },
     extensions: ['.ts', '.js', '.json'],
+  },
+  optimization: {
+    minimize: false,
   },
   module: {
     rules: [
