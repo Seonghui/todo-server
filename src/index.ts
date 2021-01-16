@@ -7,15 +7,16 @@ import env from '@/src/config/enviromnent';
 dotEnvFlow.config();
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = Number(process.env.PORT) || 8080;
+const HOST = process.env.HOST || '0.0.0.0';
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 console.log(`NODE_ENV=${env.NODE_ENV}`);
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+app.listen(PORT, HOST, () => {
+  console.log(`Server is running on port ${HOST}:${PORT}.`);
 });
 
 app.use(router);
