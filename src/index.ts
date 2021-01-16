@@ -13,10 +13,10 @@ const HOST = process.env.HOST || '0.0.0.0';
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-console.log(`NODE_ENV=${env.NODE_ENV}`);
+console.debug(env);
 
 app.listen(PORT, HOST, () => {
-  console.log(`Server is running on port ${HOST}:${PORT}.`);
+  console.debug(`Server is running on port ${HOST}:${PORT}.`);
 });
 
 app.use(router);
