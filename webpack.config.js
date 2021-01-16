@@ -5,7 +5,7 @@ module.exports = {
   mode: process.env.NODE_ENV || 'development',
   target: 'node',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname),
     filename: 'index.js',
   },
   resolve: {

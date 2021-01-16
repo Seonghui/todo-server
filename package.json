@@ -7,7 +7,7 @@
     "dev": "cross-env NODE_ENV=development nodemon --exec ts-node -r tsconfig-paths/register -r dotenv-flow/config src/index.ts",
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
-    "start": "node dist/index.js",
+    "start": "node index.js",
     "lint:fix": "eslint '**/*.ts' --fix"
   },
   "keywords": [],
